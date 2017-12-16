@@ -1,0 +1,1 @@
+ALTER TABLE storyboard_details ADD FOREIGN KEY (created_by) REFERENCES user_details(ID);

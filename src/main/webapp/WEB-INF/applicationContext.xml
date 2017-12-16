@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--
+		Scans within the base package of the application for @Components to configure as beans
+	-->
+    <context:component-scan base-package="com.prorg" />
+    <tx:annotation-driven/>
+
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+    </bean>
+
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.prorg.model" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+                <prop key="hibernate.c3p0.min_size">${hibernate.c3p0.min_size}</prop>
+                <prop key="hibernate.c3p0.max_size">${hibernate.c3p0.max_size}</prop>
+                <prop key="hibernate.c3p0.acquire_increment">${hibernate.c3p0.acquire_increment}</prop>
+                <prop key="hibernate.c3p0.timeout">${hibernate.c3p0.timeout}</prop>
+                <prop key="hibernate.c3p0.max_statements">${hibernate.c3p0.max_statements}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    <bean id="random" class="java.security.SecureRandom" />
+    <bean id="password" class="com.prorg.helper.Password" />
+    <bean id="validatorFactory" class="javax.validation.Validation" factory-method="buildDefaultValidatorFactory" />
+    <bean id="validator" factory-bean="validatorFactory" factory-method="getValidator" />
+    <bean id="modelValidator" class="com.prorg.helper.validator.ModelValidator" />
+    <bean id="cardUserPermissionService" class="com.prorg.service.proxy.impl.CardUserPermissionServiceProxyImpl" />
+
+</beans>

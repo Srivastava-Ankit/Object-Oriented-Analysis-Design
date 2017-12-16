@@ -1,0 +1,249 @@
+/*App CSS*/
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans');
+
+.app-color{
+    background-color: #0E6AA6;
+}
+.home-margin{
+    margin:0;
+}
+body {
+    font-family: 'Alegreya Sans', serif;
+}
+.heading-color{
+    color:#fff;
+}
+.no-padding{
+    padding: 0;
+}
+.no-margin{
+    margin: 0;
+}
+.header-box{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    height:100px;
+    background-color: #0D78BE;
+    font-weight: bold;
+    align-content: center;
+    align-items: center;
+}
+.text-center{
+    text-align: center;
+}
+.color-white{
+    color:#fff;
+}
+.color-black{
+    color:#000000;
+}
+.image-logo{
+    margin-top: 50px;
+}
+.width-full{
+    width: 100%;
+}
+.login-box {
+    width: 50%;
+}
+.inline-flex{
+    display: inline-flex;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+.storyboard-text-box{
+    text-align: center;
+}
+.storyboard-text-box input{
+    box-sizing: border-box;
+    border: none;
+    border-radius: 6px;
+    margin:10px auto;
+    color: #444;
+    outline: none;
+    text-align: center;
+}
+
+.storyboard-button input{
+    background-color: #1ea9b5;
+    border: none;
+    color:white;
+    font-weight: bold;
+}
+.storyboard-button-1 input{
+    background-color: #1792b5;
+    border: none;
+    color:white;
+    font-weight: bold;
+}
+.text-box input{
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 8px 10px;
+    margin-right: 8px;
+    color: #444;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.header-button1 a{
+ color:#fff;
+    text-decoration: none;
+}
+.header-button1{
+    color:white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: #57A241;
+    margin-left: 20px;
+}
+.header-button2 a{
+    color: #ffffff;
+    text-decoration: none;
+}
+.header-button2{
+    background-color: #186AA5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+
+}
+
+.login-button input{
+    background-color: #57A241;
+    color:white;
+}
+.sign-notamember{
+    font-size: 20px;
+    color:#999
+}
+.sign-notamember a{
+    color:#999;
+}
+
+/*HomePage CSS*/
+.header-login{
+    justify-content: flex-end;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 100px 800px 100px;
+}
+.image-logo-header img{
+    width: 50%;
+}
+.login-button-header input{
+    background-color: #58A043;
+    color: white !important;
+}
+.swimlane-top{
+    display: flex;
+    justify-content: space-between;
+}
+.storyboard-tag{
+    margin-right: 15px;
+    background-color:#36c45a;
+    display: inline-flex;
+}
+.storyboard-tag a{
+    color:#fff;
+    text-decoration: none;
+    padding: 50px;
+}
+.text-box-header input{
+    box-sizing: border-box;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 8px 10px;
+    margin-right: 10px;
+    color: #444;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.width-30{
+    width:30%;
+}
+.width-70{
+    width:70%;
+}
+header {
+    background-color: #1877BD;
+    grid-column: span 10;
+}
+aside {
+    grid-column: span 5;
+    background-color: #186AA5;
+}
+main {
+    grid-column: span 5;
+    background-color: #186AA5;
+}
+footer {
+    grid-column: span 10;
+    background-color: #1877BD;
+}
+.register-now{
+    height: 80px;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+.swimlane {
+    border: black solid 2px;
+    padding: 10px;
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #4DBD6B;
+}
+
+.swimlane-title {
+    font-weight: bold;
+}
+
+.card-form {
+    background-color: #51b5ab;
+    margin-top: 5px;
+    border: 2px solid #7c7c7c;
+    border-radius: 5px;
+}
+
+.create-card {
+    display: none;
+    background-color: #E1E3E5;
+    border: black solid 2px;
+    padding: 10px;
+}
+
+.add-swimlane{
+    width: 250px;
+    background-color: #42A15B;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.storyboards-container {
+    padding: 10px;
+}
+
+.right {
+    float: right;
+}
+.add-boxes {
+    display: inline-block;
+}
